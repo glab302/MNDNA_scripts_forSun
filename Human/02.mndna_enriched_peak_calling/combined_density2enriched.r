@@ -65,7 +65,11 @@ addChromatinInfo <- function(annotated_bed, peak_feature, rbcDNA_med, gDNA_med){
 
 }
 
-feature = read.table(str_c('result/', 'result_d_0_merge_t_rbcDNA_c_gDNA.10samples.broadPeak.addsort.bed'), sep='\t', head=T)
+feature = read.table(str_c('result/', 'result_d_0_merge_t_rbcDNA_c_gDNA.10samples.broadPeak.bed'), sep='\t', head=T)
+feature$width = feature$end-feature$start
+feature$sortlabel = (feature$count*feature$foldenrichment)/feature$width
+feature = feature[order(feature$sortlabel,decreasing=T), ]
+
 rbcDNA_med = HD12_60m_1000k_MN
 gDNA_med = HD12_60m_1000k_gDNA
 CN_smooth_r1_1000k <- addChromatinInfo(feature_1000kb_anno, feature, rbcDNA_med, gDNA_med)

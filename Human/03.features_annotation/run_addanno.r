@@ -32,7 +32,7 @@ add_GenomicAnnotation_userbed(feature_bed, 'result/', 'CRC0106')#
 #
 ### PanCancer features#
 filename='PanC0106.overlap.bed'#
-feature_bed = PanC0106, sep='\t', head=T); feature_bed = feature_bed[, c('chr','start','end')]#
+feature_bed = PanC0106; feature_bed = feature_bed[, c('chr','start','end')]#
 colnames(feature_bed) <- c('chromosome', 'start', 'end')#
 add_GenomicAnnotation_userbed(feature_bed, 'result/', 'PanC0106')
 
